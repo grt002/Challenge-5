@@ -1,23 +1,51 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-$(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
+// Call JQuery to ensure that code isn't run until the browser has finished rendering all the elements in the HTML.
+const dateContainer = $('#currentDay');
+
+$(function displayCurrentDate() {
+  const now = dayjs();
+  const formattedDate = now.format('dddd, MMMM D, YYYY');
+  dateContainer.text(formattedDate);
+
+  function updateTimeblockStatus() {
+    // Get the current time using Day.js
+    var currentTime =dayjs().hour();
+
+    // Loop through each timeblock
+    $("time-block").each(function () {
+      var blockTime = parseInt($(this).attr("id").split("-")[1]);
+
+      // Check if the timeblock is in the past, present, or future
+      if (blockTime < currentTime) {
+        $(this).addClass("past");
+      } else if (blockTime ===currentTime) {
+        $(this).addClass("present");
+      } else {
+        $(this).addClass("future");
+      }
+    });
+  }
+
+  // Call updateTimeblockStatus function to update the timeblock status on page load
+  updateTimeblockStatus();
+
+  $('.saveBtn').click(function() {
+    // Get the text value of the description textarea for the timeblock
+    var description = $(this).siblings('textarea').val();
+
+    // Get the id of the timeblock that the button is in
+    var timeblockID = $(this).closest('.time-block').attr('id');
+
+    //Save the description to local storage using the timeblock id as the key
+    localStorage.setItem(timeblockID, description);
+  });
+
+  // Get user input that was saved in localStorage and set the values of the corresponding textarea elements
+  $(".time-block").each(function() {
+    var timeblockID = $(this).attr("id");
+    var description = localStorage.getItem(timeblockID);
+
+    if (description !== null) {
+      $(this).children("description").val(description);
+    }
+  });
 });
