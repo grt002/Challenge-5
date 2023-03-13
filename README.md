@@ -10,7 +10,7 @@ Follow the links below to view the GitHub repository and the deployed applicatio
 
 GitHub Repository Link: https://github.com/grt002/Challenge-5
 
-Deployed Application Link: 
+Deployed Application Link: https://grt002.github.io/Challenge-5/
 
 ## Usage
 
