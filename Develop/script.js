@@ -4,10 +4,10 @@ $(document).ready(function() {
   const dateContainer = $('#currentDay');
   
     function displayCurrentDate() {
-    const now = dayjs();
-    const formattedDate = now.format('dddd, MMMM D, YYYY');
-    dateContainer.text(formattedDate);
-  }
+      const now = dayjs();
+      const formattedDate = now.format('dddd, MMMM D, YYYY');
+      dateContainer.text(formattedDate);
+    }
   
     function updateTimeblockStatus() {
       // Get the current time using Day.js
@@ -30,6 +30,8 @@ $(document).ready(function() {
   
     // Call updateTimeblockStatus function to update the timeblock status on page load
     updateTimeblockStatus();
+
+    displayCurrentDate();
   
     $('.saveBtn').click(function() {
       // Get the text value of the description textarea for the timeblock
