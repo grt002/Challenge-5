@@ -6,18 +6,22 @@ The assignment in the bootcamp course was to create a simple calendar applicatio
 
 ## Installation
 
+Follow the links below to view the GitHub repository and the deployed application, respectively.
+
+GitHub Repository Link: https://github.com/grt002/Challenge-5
+
+Deployed Application Link: 
+
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+Add tasks into the calendar by clicking in a timeblock and typing with the keyboard. Click the "save" button on the right hand side of the timeblock to save the task into local storage. An example is shown below with a screenshot of the past day's activities.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+![Alt text](Assets/images/Work%20Day%20Scheduler%20Screenshot.jpg)
 
 ## Credits
 
 Starter code was obtained from https://github.com/coding-boot-camp/crispy-octo-meme.
 
 ## License
+
+See: [label](LICENSE.md)
